@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TasksViewController.swift
 //  DoIt
 //
 //  Created by Muhaimin Habib on 4/1/17.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate ,UITableViewDataSource {
+class TasksViewController: UIViewController,UITableViewDelegate ,UITableViewDataSource {
 
     @IBOutlet weak var tableview: UITableView!
     var tasks : [Task] = []
-
+      
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,12 @@ class ViewController: UIViewController,UITableViewDelegate ,UITableViewDataSourc
     @IBAction func addACTION(_ sender: Any) {
         
         performSegue(withIdentifier: "addSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC  = segue.destination as! CreateTaskViewController
+        nextVC.previousVC = self
+        
     }
 }
 

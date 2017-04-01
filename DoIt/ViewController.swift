@@ -32,7 +32,17 @@ class ViewController: UIViewController,UITableViewDelegate ,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let task = tasks[indexPath.row]
-        cell.textLabel?.text = task.name
+        
+        if task.important {
+        
+            cell.textLabel?.text = "❗️\(task.name)"
+        
+        }else{
+        
+            cell.textLabel?.text = task.name
+        
+        }
+        
         return cell
     }
     func makeTasks() -> [Task] {
@@ -57,5 +67,9 @@ class ViewController: UIViewController,UITableViewDelegate ,UITableViewDataSourc
         
     }
 
+    @IBAction func addACTION(_ sender: Any) {
+        
+        performSegue(withIdentifier: "addSegue", sender: nil)
+    }
 }
 
